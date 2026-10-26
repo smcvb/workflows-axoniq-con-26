@@ -1,7 +1,14 @@
 @host = http://localhost:8080
 
 ### Start the booking-execution workflow
+# Set failPreparePayment and/or failNotifyFinance to true to make that command handler throw.
 POST {{host}}/samples/booking-execution?identifier={{$random.integer(1000, 9999)}}
+Content-Type: application/json
+
+{
+  "failPreparePayment": false,
+  "failNotifyFinance": false
+}
 
 ### Start the execute workflow
 POST {{host}}/samples/execute?identifier={{$random.integer(1000, 9999)}}

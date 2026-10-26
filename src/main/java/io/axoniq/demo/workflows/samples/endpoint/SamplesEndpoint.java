@@ -11,6 +11,7 @@ import io.axoniq.demo.workflows.samples.basic.api.TimeoutsStarted;
 import io.axoniq.demo.workflows.samples.basic.api.WaitStarted;
 import org.axonframework.messaging.eventhandling.gateway.EventGateway;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,8 +36,21 @@ public class SamplesEndpoint {
     }
 
     @PostMapping("/booking-execution")
-    public CompletableFuture<String> startBookingExecution(@RequestParam(required = false) String identifier) {
-        return publish(identifier, BookingMade::new);
+    public CompletableFuture<String> startBookingExecution(
+            @RequestParam(required = false) String identifier,
+            @RequestBody(required = false) BookingOptions options
+    ) {
+        BookingOptions effective = options != null ? options : new BookingOptions(false, false);
+        return publish(identifier, id -> new BookingMade(id,
+                                                         effective.failPreparePayment(),
+                                                         effective.failNotifyFinance()));
+    }
+
+    /**
+     * Toggles for the booking-execution sample, deciding whether the respective command handler throws.
+     */
+    public record BookingOptions(boolean failPreparePayment, boolean failNotifyFinance) {
+
     }
 
     @PostMapping("/execute")
