@@ -1,0 +1,28 @@
+@host = http://localhost:8080
+
+### Start the booking-execution workflow
+POST {{host}}/samples/booking-execution?identifier={{$random.integer(1000, 9999)}}
+
+### Start the execute workflow
+POST {{host}}/samples/execute?identifier={{$random.integer(1000, 9999)}}
+
+### Start the publish workflow
+POST {{host}}/samples/publish?identifier={{$random.integer(1000, 9999)}}
+
+### Start the wait workflow
+POST {{host}}/samples/wait?identifier={{$random.integer(1000, 9999)}}
+
+### Start the error-handling workflow
+POST {{host}}/samples/error-handling?identifier={{$random.integer(1000, 9999)}}
+
+### Start the combinators workflow
+POST {{host}}/samples/combinators?identifier={{$random.integer(1000, 9999)}}
+
+### Start the retries workflow
+POST {{host}}/samples/retries?identifier={{$random.integer(1000, 9999)}}
+
+### Start the timeouts workflow
+POST {{host}}/samples/timeouts?identifier={{$random.integer(1000, 9999)}}
+
+### Start the lifecycle-listeners workflow
+POST {{host}}/samples/lifecycle-listeners?identifier={{$random.integer(1000, 9999)}}
