@@ -83,3 +83,7 @@ src/main/java/io/axoniq/demo/workflows
     ├── booking                   the booking workflow, its command handlers, and api/ with its commands and events
     └── endpoint                  SamplesEndpoint, the REST endpoints
 ```
+
+## License
+
+This project is licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full text.
