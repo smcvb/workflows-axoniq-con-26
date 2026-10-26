@@ -1,5 +1,12 @@
-package io.axoniq.demo.workflows.samples;
+package io.axoniq.demo.workflows.samples.booking;
 
+import io.axoniq.demo.workflows.samples.booking.api.BookingMade;
+import io.axoniq.demo.workflows.samples.booking.api.ConfirmBooking;
+import io.axoniq.demo.workflows.samples.booking.api.FlightDelayed;
+import io.axoniq.demo.workflows.samples.booking.api.NotifyFinance;
+import io.axoniq.demo.workflows.samples.booking.api.PaymentConfirmed;
+import io.axoniq.demo.workflows.samples.booking.api.PreparePayment;
+import io.axoniq.demo.workflows.samples.booking.api.RescheduleBooking;
 import io.axoniq.framework.workflow.annotation.Workflow;
 import io.axoniq.framework.workflow.dsl.api.EventCondition;
 import io.axoniq.framework.workflow.dsl.api.PayloadProcessor;
@@ -8,7 +15,6 @@ import io.axoniq.framework.workflow.dsl.api.WorkflowStepResult;
 import io.axoniq.framework.workflow.dsl.simple.SimpleWorkflowContext;
 import org.axonframework.messaging.commandhandling.gateway.CommandDispatcher;
 import org.axonframework.messaging.core.QualifiedName;
-import org.axonframework.messaging.eventhandling.annotation.Event;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -23,9 +29,10 @@ import static java.util.concurrent.TimeUnit.MILLISECONDS;
 public class BookingExecutionWorkflow {
 
     @Workflow(
+            workflowNamespace = "booking",
             workflowName = "BookingExecution",
-            startOnEventClass = BookingMade.class,
-            idProperty = "bookingId"
+            idProperty = "bookingId",
+            startOnEventClass = BookingMade.class
     )
     public void execute(SimpleWorkflowContext context,
                         CommandDispatcher dispatcher) {
@@ -76,33 +83,5 @@ public class BookingExecutionWorkflow {
 
     static boolean bookingStillValid(String bookingId) {
         return true;
-    }
-
-    public record BookingMade(String bookingId) {
-
-    }
-
-    record PreparePayment(String bookingId) {
-
-    }
-
-    record PaymentConfirmed(String bookingId) {
-
-    }
-
-    record ConfirmBooking(String bookingId) {
-
-    }
-
-    record NotifyFinance(String bookingId) {
-
-    }
-
-    record FlightDelayed() {
-
-    }
-
-    record RescheduleBooking(String bookingId) {
-
     }
 }
