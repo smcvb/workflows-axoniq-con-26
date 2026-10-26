@@ -1,6 +1,6 @@
-package io.axoniq.demo.workflows.samples;
+package io.axoniq.demo.workflows.samples.basic;
 
-import io.axoniq.demo.workflows.samples.api.PaymentAccepted;
+import io.axoniq.demo.workflows.samples.basic.api.PaymentAccepted;
 import io.axoniq.framework.workflow.annotation.Workflow;
 import io.axoniq.framework.workflow.dsl.api.EventCondition;
 import io.axoniq.framework.workflow.dsl.api.WorkflowStepResult;

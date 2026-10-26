@@ -1,4 +1,4 @@
-package io.axoniq.demo.workflows.samples;
+package io.axoniq.demo.workflows.samples.basic;
 
 import io.axoniq.framework.workflow.annotation.Workflow;
 import io.axoniq.framework.workflow.annotation.WorkflowCompletedHandler;

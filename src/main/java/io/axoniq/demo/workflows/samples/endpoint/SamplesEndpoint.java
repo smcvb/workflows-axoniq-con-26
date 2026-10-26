@@ -1,14 +1,14 @@
 package io.axoniq.demo.workflows.samples.endpoint;
 
-import io.axoniq.demo.workflows.samples.BookingExecutionWorkflow.BookingMade;
-import io.axoniq.demo.workflows.samples.api.CombinatorsStarted;
-import io.axoniq.demo.workflows.samples.api.ErrorHandlingStarted;
-import io.axoniq.demo.workflows.samples.api.ExecuteStarted;
-import io.axoniq.demo.workflows.samples.api.LifecycleListenersStarted;
-import io.axoniq.demo.workflows.samples.api.PublishStarted;
-import io.axoniq.demo.workflows.samples.api.RetriesStarted;
-import io.axoniq.demo.workflows.samples.api.TimeoutsStarted;
-import io.axoniq.demo.workflows.samples.api.WaitStarted;
+import io.axoniq.demo.workflows.samples.booking.api.BookingMade;
+import io.axoniq.demo.workflows.samples.basic.api.CombinatorsStarted;
+import io.axoniq.demo.workflows.samples.basic.api.ErrorHandlingStarted;
+import io.axoniq.demo.workflows.samples.basic.api.ExecuteStarted;
+import io.axoniq.demo.workflows.samples.basic.api.LifecycleListenersStarted;
+import io.axoniq.demo.workflows.samples.basic.api.PublishStarted;
+import io.axoniq.demo.workflows.samples.basic.api.RetriesStarted;
+import io.axoniq.demo.workflows.samples.basic.api.TimeoutsStarted;
+import io.axoniq.demo.workflows.samples.basic.api.WaitStarted;
 import org.axonframework.messaging.eventhandling.gateway.EventGateway;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
