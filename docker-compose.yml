@@ -1,0 +1,24 @@
+services:
+  axonserver:
+    image: axoniq/axonserver:latest
+    container_name: axonserver
+    ports:
+      - "8024:8024" # HTTP: dashboard and REST API
+      - "8124:8124" # gRPC: client connections
+    environment:
+      # Development mode: single node, no access control, auto-created default context.
+      AXONIQ_AXONSERVER_STANDALONE: "true"
+    volumes:
+      - axonserver-data:/axonserver/data
+      - axonserver-events:/axonserver/events
+      - axonserver-plugins:/axonserver/plugins
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8024/actuator/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  axonserver-data:
+  axonserver-events:
+  axonserver-plugins:
